@@ -29,15 +29,10 @@ class ImagesController < ApplicationController
 
   def index
      @images = Image.all
-#if params[:search]
-#        @images = Image.search(params[:search]).all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])  
-#      else
-#        @images = Image.all.order('created_at DESC').paginate(:per_page => 10, :page => params[:page])
-#      end
   end
 
   private
   def image_params
-    params.require(:image).permit(:image, :category_id, :image_title, :image_description, :image_file_size, :image_content_type, :remote_image_url)
+    params.require(:image).permit(:image, :category_id, :image_title, :image_description, :image_file_size, :image_content_type)
   end
 end
