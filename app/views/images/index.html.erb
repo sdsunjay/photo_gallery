@@ -1,20 +1,20 @@
 <div id="gallery"> 
    <h2>All Images</h2>
  <% if @images.exists? %>
-  <% @images.each_slice(2) do |image| %>
+  <% @images.each_slice(4) do |image| %>
    <div class="row">
-    <% image.each do |p| %>
+    <% image.each do |image| %>
       <div class="col-md-3">
 	 <div class="photo photo-type-line">
-	    <a href="img/bw1.jpg" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
+	    <a href="<% image.image_url() %>" class="photo-hover" data-lightbox="my-images" data-title="Lorem Ipsum">
 	       <div class="photo-info">
-		  <div class="headline">Lorem Ipsum</div>
+		  <div class="headline"><%= image.image_title %></div>
 		  <div class="line"></div>
-		  <div class="desc">lots of text for the description</div>
+		  <div class="desc"><%= image.image_description %></div>
 	       </div>
 	      <div class="mask"></div>
 	    </a>
-	    <div class="photo-img"><img src="img/bw1.jpg"></div>
+	    <div class="photo-img"><%= image_tag image.image_url(:thumb) %></div>
 	 </div>
       </div><!-- /column -->
   <% end %>

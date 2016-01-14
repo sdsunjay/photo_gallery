@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     # save the category
     if @category.save
         flash[:notice] = "Category Created"
-        redirect_to categories_path
+        redirect_to root_path
     else
         render 'new'
     end
@@ -17,13 +17,15 @@ class CategoriesController < ApplicationController
 
   def edit
     @category = Category.find(params[:id])
+    @categories = Category.all
+    @images = @category.images
   end
 
   def update
     @category = Category.find(params[:id])
     if @category.update(category_params)
           flash[:notice] = "Category Updated"
-          redirect_to categories_path
+          redirect_to category_path(params[:id])
     else
           flash[:alert] = "Category Not Updated"
           render :action => 'edit'
@@ -35,11 +37,15 @@ class CategoriesController < ApplicationController
 
     if  @category.destroy
         flash[:notice] = "Category Removed"
-        redirect_to categories_path
+        redirect_to root_path
     else
         render 'destroy'
     end
   end
+  def show
+    @category = Category.find(params[:id])
+    @categories = Category.all
+    @images = @category.images
   private
   def category_params
     params.require(:category).permit(:name)

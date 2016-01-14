@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
 
     if  @image.destroy
         flash[:notice] = "Image Removed"
-        redirect_to root_path
+        redirect_to images_path
     else
         render 'destroy'
     end
@@ -29,10 +29,11 @@ class ImagesController < ApplicationController
 
   def index
      @images = Image.all
+     @categories = Category.all
   end
 
   private
   def image_params
-    params.require(:image).permit(:image, :category_id, :image_title, :image_description, :image_file_size, :image_content_type)
+    params.require(:image).permit(:image, :category_id, :image_title, :image_description, :image_file_size, :image_content_type, :remote_image_url)
   end
 end

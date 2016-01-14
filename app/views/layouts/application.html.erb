@@ -23,9 +23,6 @@
           <% @categoryNav.each do |category| %>
 	      <li><%= link_to category.name, category_path(category.id) %></li>
 	  <% end %>      
-	  <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">Category One</a></li>
-            <li><a href="#contact">Category Two</a></li>
           </ul>
 	  <ul class="nav navbar-nav pull-right">
 	  <li><%= link_to "Upload Photo", upload_path %></li>
@@ -48,12 +45,5 @@
    <footer>
        <p>Copyright &copy; 2016, Photo Gallery</p>
    </footer>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script>window.jQuery || document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/lightbox.js"></script>
 </body>
 </html>
