@@ -50,3 +50,4 @@ bower.json
 Status API Training Shop Blog About Pricing
 
 *.cache
+*.DS_Store
